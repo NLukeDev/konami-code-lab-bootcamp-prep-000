@@ -10,23 +10,29 @@ const codes = [
   "b",
   "a"
 ];
+
+function init() {
+  // your code here
+ 
+// Keep track of index outside of the event handler.
 let index = 0;
 
-document.body.addEventListener("keydown", (thingPressed) => {
-  const key = thingPressed.key 
-  console.log(key) 
-  
-  if (codes[index] == key) {
-    ++index 
-  } 
-  
-  else {
-    idx = 0 
+document.body.addEventListener('keydown', onKeyDownHandler)
+
+// This is the function that would be invoked by the event listener.
+function onKeyDownHandler(e) {
+  const key = e.key;
+ 
+  if (key === codes[index]) {
+    index++;
+ 
+    if (index === codes.length) {
+      alert("Hurray!");
+ 
+      index = 0;
+    }
+  } else {
+    index = 0;
   }
-  
-  console.log(index)
-  if (index == 10) {
-    alert("Hurray!");
-    index = 0 
-  }
-}); 
+}
+}
